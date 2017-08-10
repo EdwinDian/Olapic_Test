@@ -10,7 +10,7 @@ You should have everything you need, feel free to reach out if you don't. Happy 
 Your task is to translate the business requirement from a "hypothetical" customer of ours, and create a working version of the experience that the customer is requesting.
 Here is a business requirement from the customer:
 I want to create a simple front-end experience that would showcase latest photos from my Olapic account. I want the photos to be in a scrollable
-carousel like so: http://www.maurices.com/home/index.jsp
+carousel like so: [http://www.maurices.com/home/index.jsp]
 Your goal is to create a simple front-end display of UGC pulled from Olapic API, and incorporate a carousel feature to make the content
 scrollable.
 ## Conditions
