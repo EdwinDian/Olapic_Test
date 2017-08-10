@@ -26,13 +26,13 @@ See the following live UX examples:
   - [http://www.maurices.com/home/index.jsp] (scroll down to the photo carousel component powered by Olapic
   - [http://shop.guess.com/en/] (at the bottom of the page)
 
-#### Olapic API Information
+## Olapic API Information
 Our RESTful API documentation can be found here: [http://www.photorank.me/api.html].
 API Key you can use for authentication is: 0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18
 Please provide the code in a Github repository. Your file structure should look something like this, but you're not limited to it:
   - index.html - HTML for the carousel
   - script.js - JS logic for the carousel
   - style.css - CSS for the carousel
-# Hint:
+#### Hint:
 AngularJS does have a steep learning curve. If you are not as familiar, then for the particular exercise you may want to use a simpler library such
 as jQuery to perform an AJAX call to the web service, and then inject the content into the DOM directly.
