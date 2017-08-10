@@ -71,7 +71,7 @@ $(document).ready(function() {
 				// Get updated photos
 				photos = $('div', view);
 				// Append triggered after animate when going right
-				for (var i=0; i<4; i++) {
+				for (var i=0; i<6; i++) {
 					$('.view div:last').after($(photos[i]));
 				}
 				// After move, snap view back to position 0
