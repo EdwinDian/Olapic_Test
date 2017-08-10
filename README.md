@@ -1,15 +1,19 @@
 # SOLUTIONS ARCHITECT: FRONT-END TEST
 ## Intro
 Our intent of the test is to measure how you approach solving problems from both technical and business perspectives. You may find that our test is not that difficult. To put it in other words, it can be as difficult as you want. The idea behind the test is for you to present all of your knowledge about solving problems, and show how awesome of a front-end tech guru you are.
+
 At the end of the explanation of the problem case, you'll find the conditions of the test. Pay extra attention to these as they are very important.
+
 Process is very important to us - we don't want to you to show just couple of lines of code. We want you to explain your train of thought, how you did whatever you did, why you decided whatever you decided. You can do that either in this email thread, or in the Readme file of the repository you'll be sending.
 You should have everything you need, feel free to reach out if you don't. Happy hacking!
 
 ## Problem Case
 Your task is to translate the business requirement from a "hypothetical" customer of ours, and create a working version of the experience that the customer is requesting.
+
 Here is a business requirement from the customer:
-I want to create a simple front-end experience that would showcase latest photos from my Olapic account. I want the photos to be in a scrollable
-carousel like so: [http://www.maurices.com/home/index.jsp]
+
+I want to create a simple front-end experience that would showcase latest photos from my Olapic account. I want the photos to be in a scrollable carousel like so: [http://www.maurices.com/home/index.jsp]
+
 Your goal is to create a simple front-end display of UGC pulled from Olapic API, and incorporate a carousel feature to make the content
 scrollable.
 
