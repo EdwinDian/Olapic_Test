@@ -38,3 +38,6 @@
 #left, #right {
 	cursor:pointer;
 }
+.site-wrapper-inner{
+	background-color:#efefef;
+}
