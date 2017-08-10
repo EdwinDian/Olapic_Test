@@ -20,6 +20,7 @@ Create a scrollable image carousel with the following specs:
   - 6 photos showing at a given time.
   - Make it look awesome!
   - Implement the photo objects from the Olapic API response into an image carousel.
+
 Bonus Points for incorporating an image lightbox modal. For instance, a modal would pop up when you click on a specific photo.
 
 See the following live UX examples:
