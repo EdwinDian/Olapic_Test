@@ -23,7 +23,7 @@
 				$('.view').append(
 					'<div class="imgDiv" id="photo-'+index+'"><a href="'
 					+ value.images.normal +
-					'" class="magnific"><img class="images mdl-color--white mdl-shadow--2dp" src="'
+					'" class="magnific"><img class="images mdl-color--white mdl-shadow--4dp" src="'
 					+ value.images.thumbnail +
 					'"></a></div>'
 				);
