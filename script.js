@@ -11,7 +11,7 @@ $(document).ready(function() {
 		url: url,
 		dataType: 'json',
 
-	}).done(function (result) {
+	}).done(function (result) 
 
 		var viewWidth = 160 * (result.data._embedded.length);
 		$('.view').width(viewWidth);
@@ -21,8 +21,7 @@ $(document).ready(function() {
 			if (value.source_id) {
 				// Append each image to carousel
 				$('.view').append(
-					'<div class="imgDiv" id="photo-'+index+'"><a href="'
-					+ value.images.normal +
+					'<div class="imgDiv" id="photo-'+index+'"><a href="'					+ value.images.normal +
 					'" class="magnific"><img class="images" src="'
 					+ value.images.thumbnail +
 					'"></a></div>'
@@ -38,7 +37,7 @@ $(document).ready(function() {
 
 		view.css('left', 0);
 
-		$('#left').on('click', function () {
+		$('#nav-prev').on('click', function () {
 			// Get updated view
 			view = $('.view');
 			// Get updated photos
@@ -53,7 +52,7 @@ $(document).ready(function() {
 			$('.view').animate({'left': 0}, 200);
 		});
 
-		$('#right').on('click', function () {
+		$('#nav-next').on('click', function () {
 			// Slide images left by 4 photos' width
 			$('.view').animate({'left': leftValue}, 200, function () {
 				// Get updated view
@@ -89,4 +88,3 @@ $(document).ready(function() {
 	});
 
 });
-
