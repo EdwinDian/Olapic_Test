@@ -1,277 +1,103 @@
- /*global jQuery */
-/*!
- * jQuery Scrollbox
- * (c) 2009-2013 Hunter Wu <hunter.wu@gmail.com>
- * MIT Licensed.
- *
- * http://github.com/wmh/jquery-scrollbox
- */
+// OLAPIC TEST [SUN LEE] (5/7/14)
 
-(function($) {
+$(document).ready(function() {
 
-$.fn.scrollbox = function(config) {
-	//default config
-	var defConfig = {
-		linear: false,					// Scroll method
-		startDelay: 2,					// Start delay (in seconds)
-		delay: 3,							 // Delay after each scroll event (in seconds)
-		step: 5,								// Distance of each single step (in pixels)
-		speed: 32,							// Delay after each single step (in milliseconds)
-		switchItems: 1,				 // Items to switch after each scroll event
-		direction: 'vertical',
-		distance: 'auto',
-		autoPlay: true,
-		onMouseOverPause: true,
-		paused: false,
-		queue: null,
-		listElement: 'ul',
-		listItemElement:'li',
-		infiniteLoop: true,		 // Infinite loop or not
-		switchAmount: 0,				// Give a number if you don't want to have infinite loop
-		afterForward: null,		 // Callback function after each forward action
-		afterBackward: null,		// Callback function after each backward action
-		triggerStackable: false // Allow triggers when action is not finish yet
-	};
-	config = $.extend(defConfig, config);
-	config.scrollOffset = config.direction === 'vertical' ? 'scrollTop' : 'scrollLeft';
-	if (config.queue) {
-		config.queue = $('#' + config.queue);
-	}
+	var key = "0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18";
+	var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=';
 
-	return this.each(function() {
-		var container = $(this),
-				containerUL,
-				scrollingId = null,
-				nextScrollId = null,
-				paused = false,
-				releaseStack,
-				backward,
-				forward,
-				resetClock,
-				scrollForward,
-				scrollBackward,
-				forwardHover,
-				pauseHover,
-				switchCount = 0,
-				stackedTriggerIndex = 0;
+	url += key;
 
-		if (config.onMouseOverPause) {
-			container.bind('mouseover', function() { paused = true; });
-			container.bind('mouseout', function() { paused = false; });
-		}
-		containerUL = container.children(config.listElement + ':first-child');
+	$.ajax({
 
-		// init default switchAmount
-		if (config.infiniteLoop === false && config.switchAmount === 0) {
-			config.switchAmount = containerUL.children().length;
-		}
+		type: 'GET',
+		url: url,
+		dataType: 'json',
 
-		scrollForward = function() {
-			if (paused) {
-				return;
-			}
-			var curLi,
-					i,
-					newScrollOffset,
-					scrollDistance,
-					theStep;
+	}).done(function (result) {
 
-			curLi = containerUL.children(config.listItemElement + ':first-child');
+		// [ADDED] Set width first (5/8/14)
+		var viewWidth = 160 * (result.data._embedded.length);
+		$('.view').width(viewWidth);
 
-			scrollDistance = config.distance !== 'auto' ? config.distance :
-				config.direction === 'vertical' ? curLi.outerHeight(true) : curLi.outerWidth(true);
-
-			// offset
-			if (!config.linear) {
-				theStep = Math.max(3, parseInt((scrollDistance - container[0][config.scrollOffset]) * 0.3, 10));
-				newScrollOffset = Math.min(container[0][config.scrollOffset] + theStep, scrollDistance);
-			} else {
-				newScrollOffset = Math.min(container[0][config.scrollOffset] + config.step, scrollDistance);
-			}
-			container[0][config.scrollOffset] = newScrollOffset;
-
-			if (newScrollOffset >= scrollDistance) {
-				for (i = 0; i < config.switchItems; i++) {
-					if (config.queue && config.queue.find(config.listItemElement).length > 0) {
-						containerUL.append(config.queue.find(config.listItemElement)[0]);
-						containerUL.children(config.listItemElement + ':first-child').remove();
-					} else {
-						containerUL.append(containerUL.children(config.listItemElement + ':first-child'));
-					}
-					++switchCount;
-				}
-				container[0][config.scrollOffset] = 0;
-				clearInterval(scrollingId);
-				scrollingId = null;
-
-				if ($.isFunction(config.afterForward)) {
-					config.afterForward.call(container, {
-						switchCount: switchCount,
-						currentFirstChild: containerUL.children(config.listItemElement + ':first-child')
-					});
-				}
-				if (config.triggerStackable && stackedTriggerIndex !== 0) {
-					releaseStack();
-					return;
-				}
-				if (config.infiniteLoop === false && switchCount >= config.switchAmount) {
-					return;
-				}
-				if (config.autoPlay) {
-					nextScrollId = setTimeout(forward, config.delay * 1000);
-				}
-			}
-		};
-
-		// Backward
-		// 1. If forwarding, then reverse
-		// 2. If stoping, then backward once
-		scrollBackward = function() {
-			if (paused) {
-				return;
-			}
-			var curLi,
-					i,
-					newScrollOffset,
-					scrollDistance,
-					theStep;
-
-			// init
-			if (container[0][config.scrollOffset] === 0) {
-				for (i = 0; i < config.switchItems; i++) {
-					containerUL.children(config.listItemElement + ':last-child').insertBefore(containerUL.children(config.listItemElement+':first-child'));
-				}
-
-				curLi = containerUL.children(config.listItemElement + ':first-child');
-				scrollDistance = config.distance !== 'auto' ?
-						config.distance :
-						config.direction === 'vertical' ? curLi.height() : curLi.width();
-				container[0][config.scrollOffset] = scrollDistance;
-			}
-
-			// new offset
-			if (!config.linear) {
-				theStep = Math.max(3, parseInt(container[0][config.scrollOffset] * 0.3, 10));
-				newScrollOffset = Math.max(container[0][config.scrollOffset] - theStep, 0);
-			} else {
-				newScrollOffset = Math.max(container[0][config.scrollOffset] - config.step, 0);
-			}
-			container[0][config.scrollOffset] = newScrollOffset;
-
-			if (newScrollOffset === 0) {
-				--switchCount;
-				clearInterval(scrollingId);
-				scrollingId = null;
-
-				if ($.isFunction(config.afterBackward)) {
-					config.afterBackward.call(container, {
-						switchCount: switchCount,
-						currentFirstChild: containerUL.children(config.listItemElement + ':first-child')
-					});
-				}
-				if (config.triggerStackable && stackedTriggerIndex !== 0) {
-					releaseStack();
-					return;
-				}
-				if (config.autoPlay) {
-					nextScrollId = setTimeout(forward, config.delay * 1000);
-				}
-			}
-		};
-
-		releaseStack = function () {
-			if (stackedTriggerIndex === 0) {
-				return;
-			}
-			if (stackedTriggerIndex > 0) {
-				stackedTriggerIndex--;
-				nextScrollId = setTimeout(forward, 0);
-			} else {
-				stackedTriggerIndex++;
-				nextScrollId = setTimeout(backward, 0);
-			}
-		};
-
-		forward = function() {
-			clearInterval(scrollingId);
-			scrollingId = setInterval(scrollForward, config.speed);
-		};
-
-		backward = function() {
-			clearInterval(scrollingId);
-			scrollingId = setInterval(scrollBackward, config.speed);
-		};
-
-		// Implements mouseover function.
-		forwardHover = function() {
-				config.autoPlay = true;
-				paused = false;
-				clearInterval(scrollingId);
-				scrollingId = setInterval(scrollForward, config.speed);
-		};
-		pauseHover = function() {
-				paused = true;
-		};
-
-		resetClock = function(delay) {
-			config.delay = delay || config.delay;
-			clearTimeout(nextScrollId);
-			if (config.autoPlay) {
-				nextScrollId = setTimeout(forward, config.delay * 1000);
-			}
-		};
-
-		if (config.autoPlay) {
-			nextScrollId = setTimeout(forward, config.startDelay * 1000);
-		}
-
-		// bind events for container
-		container.bind('resetClock', function(delay) { resetClock(delay); });
-		container.bind('forward', function() {
-			if (config.triggerStackable) {
-				if (scrollingId !== null) {
-					stackedTriggerIndex++;
-				} else {
-					forward();
-				}
-			} else {
-				clearTimeout(nextScrollId);
-				forward();
+		// Inject each photo result to carousel view (5/7/14)
+		$.each(result.data._embedded, function (index, value) {
+			// If valid source_id exists...
+			if (value.source_id) {
+				// Append each image to carousel
+				$('.view').append(
+					'<div class="imgDiv" id="photo-'+index+'"><a href="'
+					+ value.images.normal +
+					'" class="magnific"><img class="images" src="'
+					+ value.images.thumbnail +
+					'"></a></div>'
+				);
 			}
 		});
-		container.bind('backward', function() {
-			if (config.triggerStackable) {
-				if (scrollingId !== null) {
-					stackedTriggerIndex--;
-				} else {
-					backward();
+
+		// [ADDED] Custom Carousel (5/8/14)
+		var view = $('.view');
+		var photos = $('div', view);
+
+		// [ADDED] Get photo width (5/8/14)		
+		var photoWidth = 150 + 10;		
+		var photosetWidth = (photoWidth) * 4;
+		var leftValue = photosetWidth*(-1);
+
+		// [ADDED] Set default left (5/8/14)
+		view.css('left', 0);
+
+		// [ADDED] Left arrow click event (5/8/14)
+		$('#left').on('click', function () {
+			// Get updated view
+			view = $('.view');
+			// Get updated photos
+			photos = $('div', view);
+			// Prepend triggered before animate when going left
+			for (var i=photos.length-1; i>photos.length-5; i--) {
+				$('.view').prepend($(photos[i]));
+			}
+			// Snap view back to width of prepend before animating
+			view.css('left', leftValue);
+			// Animate view back to position 0
+			$('.view').animate({'left': 0}, 200);
+		});
+
+		// [ADDED] Right arrow click event (5/8/14)
+		$('#right').on('click', function () {
+			// Slide images left by 4 photos' width
+			$('.view').animate({'left': leftValue}, 200, function () {
+				// Get updated view
+				view = $('.view');
+				// Get updated photos
+				photos = $('div', view);
+				// Append triggered after animate when going right
+				for (var i=0; i<4; i++) {
+					$('.view div:last').after($(photos[i]));
 				}
-			} else {
-				clearTimeout(nextScrollId);
-				backward();
-			}
-		});
-		container.bind('pauseHover', function() { pauseHover(); });
-		container.bind('forwardHover', function() { forwardHover(); });
-		container.bind('speedUp', function(event, speed) {
-			if (speed === 'undefined') {
-				speed = Math.max(1, parseInt(config.speed / 2, 10));
-			}
-			config.speed = speed;
+				// After move, snap view back to position 0
+				view.css('left', 0);
+			});
 		});
 
-		container.bind('speedDown', function(event, speed) {
-			if (speed === 'undefined') {
-				speed = config.speed * 2;
+		// Magnific Modal Plugin (5/7/14)
+		$('.view').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			gallery: {enabled:true},
+			mainClass: 'mfp-with-zoom',
+			zoom: {
+				enabled: true,
+				duration: 200,
+				easing: 'ease-in-out',
+				opener: function (openerElement) {
+					return openerElement.is('img') ? openerElement : openerElement.find('img');
+				}
 			}
-			config.speed = speed;
 		});
 
-		container.bind('updateConfig', function (event, options) {
-				config = $.extend(config, options);
-		});
-
+	}).fail(function (err) {
+		$('.view').html('ERROR: '+err);
 	});
-};
 
-})(jQuery);
+});
+
