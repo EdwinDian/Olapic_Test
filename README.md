@@ -1,4 +1,4 @@
-### SOLUTIONS ARCHITECT: FRONT-END TEST
+# SOLUTIONS ARCHITECT: FRONT-END TEST
 ## Intro
 Our intent of the test is to measure how you approach solving problems from both technical and business perspectives. You may find that our test is not that difficult. To put it in other words, it can be as difficult as you want. The idea behind the test is for you to present all of your knowledge about solving problems, and show how awesome of a front-end tech guru you are.
 At the end of the explanation of the problem case, you'll find the conditions of the test. Pay extra attention to these as they are very important.
@@ -26,7 +26,7 @@ See the following live UX examples:
   - [http://www.maurices.com/home/index.jsp] (scroll down to the photo carousel component powered by Olapic
   - [http://shop.guess.com/en/] (at the bottom of the page)
 
-## Olapic API Information
+#### Olapic API Information
 Our RESTful API documentation can be found here: [http://www.photorank.me/api.html].
 API Key you can use for authentication is: 0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18
 Please provide the code in a Github repository. Your file structure should look something like this, but you're not limited to it:
