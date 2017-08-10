@@ -38,6 +38,11 @@
 #left, #right {
 	cursor:pointer;
 }
-.site-wrapper-inner{
+
+.site-wrapper-header {
+	
+}
+.site-wrapper-inner {
 	background-color:#efefef;
+	padding:30px 0px;
 }
