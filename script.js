@@ -3,7 +3,7 @@
 $(document).ready(function() {
 
 	var key = "0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18";
-	var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=';
+	var url = 'https://photorankapi-a.akamaihd.net/?auth_token=';
 
 	url += key;
 
