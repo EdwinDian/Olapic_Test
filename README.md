@@ -44,9 +44,9 @@ as jQuery to perform an AJAX call to the web service, and then inject the conten
 
 # Train of Thought | How? | Why?
   1.	Create the basic HTML to show a block containing more than 6 images, but displaying only 6 initially. Add links for forward and back.
-  2.	Style the content using HTML – I quite like Google Material Design Lite, so I usually pick up some of the small styling methods they use.
-  3.	Add the JavaScript for scrolling on the click of the arrows and for magnifying a selected image.  I’ll be looking to bespoke existing resources for carousels and lightboxes, rather than reinvent the wheel. Initially I’ll use local images just to get the functionality working.
-  4.	Finally, I’ll look to get the Olapic images to pull through using jQuery and AJAX.
+  2.	Add the JavaScript for scrolling on the click of the arrows and for magnifying a selected image.  I’ll be looking to bespoke existing resources for carousels and lightboxes, rather than reinvent the wheel. Initially I’ll use local images just to get the functionality working.
+  3.	Get the Olapic images to pull through using jQuery and AJAX.
+  4.	Finally, style the content using HTML – I quite like Google Material Design Lite, so I usually pick up some of the styling they use.
   
 All of this is done in IE initially, as this is usually the most troublesome browser.  Future development would be to make the page responsive to device and touch.
 
