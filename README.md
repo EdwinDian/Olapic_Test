@@ -41,3 +41,13 @@ Please provide the code in a Github repository. Your file structure should look 
 #### Hint:
 AngularJS does have a steep learning curve. If you are not as familiar, then for the particular exercise you may want to use a simpler library such
 as jQuery to perform an AJAX call to the web service, and then inject the content into the DOM directly.
+
+# Train of Thought | How? | Why?
+  1.	Create the basic HTML to show a block containing more than 6 images, but displaying only 6 initially. Add links for forward and back.
+  2.	Style the content using HTML – I quite like Google Material Design Lite, so I usually pick up some of the small styling methods they use.
+  3.	Add the JavaScript for scrolling on the click of the arrows and for magnifying a selected image.  I’ll be looking to bespoke existing resources for carousels and lightboxes, rather than reinvent the wheel. Initially I’ll use local images just to get the functionality working.
+  4.	Finally, I’ll look to get the Olapic images to pull through using jQuery and AJAX.
+  
+All of this is done in IE initially, as this is usually the most troublesome browser.  Future development would be to make the page responsive to device and touch.
+
+The output can be seen here: [https://edwindian.github.io/Olapic_Test/]
