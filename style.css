@@ -1,54 +1,39 @@
-body {
-	padding-bottom: 100px;
-}
-h1, h2, h3 {
-	padding-top: 20px;
-}
-.scroll-text {
-	border: 1px solid red;
-	width: 400px;
-	height: 4.5em;
-	overflow: hidden;
-}
-.scroll-text ul {
-	width: 800px;
-	height: 100px;
-	overflow: hidden;
-	margin: 0;
-}
-.scroll-text ul li {
-	height: 1.5em;
-}
-.scroll-img {
-	width: 1050px;
-	height: 180px;
-	overflow: hidden;
-	font-size: 0;
-}
-.scroll-img img {
-	height: 160px;
-	width: 160px;
-}
-.scroll-img ul {
-	width: 700px;
-	height: 600px;
-	margin: 0;
-	padding: 0px;
-}
-.scroll-img ul li {
-	display: inline-block;
-	margin: 10px 0 10px 10px;
-}
-#carousel.scroll-img ul {
-	width: 1500px;
-}
-#carousel {
+.carousel {
 	display:inline-block;
+	width:640px;
+	height:150px;
+	overflow:hidden;
 }
-#carousel-prev, #carousel {
+
+.view {
+	position:relative;
+	height:150px;
+	-webkit-transform: translate3d(0,0,0);
+}
+
+.imgDiv {
+	position:relative;
+	margin-left:5px;
+	margin-right:5px;
 	float:left;
 }
-#carousel-prev, #carousel-next {
-	display: inline-block;
-	padding-top: 40px;
+
+#leftDiv, #rightDiv {
+	position:relative;
+	display:inline-block;
+	font-size:25px;
+}
+
+#leftDiv {
+	left:-10px;
+	bottom:65px;
+}
+
+#rightDiv {
+	left:10px;
+	bottom:65px;
+}
+
+#left, #right {
+	cursor:pointer;
 }
