@@ -17,17 +17,17 @@ scrollable.
 See below for the conditions of the working example:
 Create a scrollable image carousel with the following specs:
 ```markdown
-  Left and right navigation buttons
-  6 photos showing at a given time.
-  Make it look awesome!
-  Implement the photo objects from the Olapic API response into an image carousel
+  - Left and right navigation buttons
+  - 6 photos showing at a given time.
+  - Make it look awesome!
+  - Implement the photo objects from the Olapic API response into an image carousel
 ```
 Bonus Points for incorporating an image lightbox modal. For instance, a modal would pop up when you click on a specific photo.
 
 See the following live UX examples:
 ```markdown
-  http://www.maurices.com/home/index.jsp (scroll down to the photo carousel component powered by Olapic
-  http://shop.guess.com/en/ (at the bottom of the page)
+  - [http://www.maurices.com/home/index.jsp] (scroll down to the photo carousel component powered by Olapic
+  - [http://shop.guess.com/en/] (at the bottom of the page)
 ```
 ## Olapic API Information
 Our RESTful API documentation can be found here: http://www.photorank.me/api.html.
