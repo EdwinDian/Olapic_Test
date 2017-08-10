@@ -53,7 +53,7 @@ $(document).ready(function() {
 			// Get updated photos
 			photos = $('div', view);
 			// Prepend triggered before animate when going left
-			for (var i=photos.length-1; i>photos.length-5; i--) {
+			for (var i=photos.length-1; i>photos.length-7; i--) {
 				$('.view').prepend($(photos[i]));
 			}
 			// Snap view back to width of prepend before animating
