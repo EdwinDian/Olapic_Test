@@ -1,4 +1,4 @@
- SOLUTIONS ARCHITECT: FRONT-END TEST
+# SOLUTIONS ARCHITECT: FRONT-END TEST
 ## Intro
 Our intent of the test is to measure how you approach solving problems from both technical and business perspectives. You may find that our test is not that difficult. To put it in other words, it can be as difficult as you want. The idea behind the test is for you to present all of your knowledge about solving problems, and show how awesome of a front-end tech guru you are.
 At the end of the explanation of the problem case, you'll find the conditions of the test. Pay extra attention to these as they are very important.
