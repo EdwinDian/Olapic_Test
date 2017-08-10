@@ -1,5 +1,3 @@
-// OLAPIC TEST [SUN LEE] (5/7/14)
-
 $(document).ready(function() {
 
 	var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=';
@@ -15,11 +13,9 @@ $(document).ready(function() {
 
 	}).done(function (result) {
 
-		// [ADDED] Set width first (5/8/14)
 		var viewWidth = 160 * (result.data._embedded.length);
 		$('.view').width(viewWidth);
 
-		// Inject each photo result to carousel view (5/7/14)
 		$.each(result.data._embedded, function (index, value) {
 			// If valid source_id exists...
 			if (value.source_id) {
@@ -34,19 +30,14 @@ $(document).ready(function() {
 			}
 		});
 
-		// [ADDED] Custom Carousel (5/8/14)
 		var view = $('.view');
 		var photos = $('div', view);
-
-		// [ADDED] Get photo width (5/8/14)		
 		var photoWidth = 150 + 10;		
 		var photosetWidth = (photoWidth) * 4;
 		var leftValue = photosetWidth*(-1);
 
-		// [ADDED] Set default left (5/8/14)
 		view.css('left', 0);
 
-		// [ADDED] Left arrow click event (5/8/14)
 		$('#left').on('click', function () {
 			// Get updated view
 			view = $('.view');
