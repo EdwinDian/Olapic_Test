@@ -1,16 +1,22 @@
 $(document).ready(function() {
 
-	var url = "https://photorankapi-a.akamaihd.net/?auth_token=0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18&version=v2.2";
+	var key = "0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18";
+	var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=';
+	var vrsn = '&version=v2.2';
+
+	url += key + vrsn;
 
 	$.ajax({
+
 		type: 'GET',
 		url: url,
 		dataType: 'json',
+
 	}).done(function (result) {
 
 		var viewWidth = 160 * (result.data._embedded.length);
 		$('.view').width(viewWidth);
-n		
+
 		$.each(result.data._embedded, function (index, value) {
 			// If valid source_id exists...
 			if (value.source_id) {
@@ -26,14 +32,14 @@ n
 		});
 
 		var view = $('.view');
-		var photos = $('div', view);	
+		var photos = $('div', view);
 		var photoWidth = 150 + 10;		
 		var photosetWidth = (photoWidth) * 4;
 		var leftValue = photosetWidth*(-1);
 
 		view.css('left', 0);
 
-		$('#nav-prev').on('click', function () {
+		$('#left').on('click', function () {
 			// Get updated view
 			view = $('.view');
 			// Get updated photos
@@ -48,7 +54,7 @@ n
 			$('.view').animate({'left': 0}, 200);
 		});
 
-		$('#nav-next').on('click', function () {
+		$('#right').on('click', function () {
 			// Slide images left by 4 photos' width
 			$('.view').animate({'left': leftValue}, 200, function () {
 				// Get updated view
@@ -66,7 +72,7 @@ n
 
 		$('.view').magnificPopup({
 			delegate: 'a',
-			type: 'image'
+			type: 'image',
 			gallery: {enabled:true},
 			mainClass: 'mfp-with-zoom',
 			zoom: {
