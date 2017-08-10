@@ -28,7 +28,7 @@ See the following live UX examples:
 
 ## Olapic API Information
 Our RESTful API documentation can be found here: [http://www.photorank.me/api.html].
-API Key you can use for authentication is: 0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18
+API Key you can use for authentication is: 0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18.
 Please provide the code in a Github repository. Your file structure should look something like this, but you're not limited to it:
   - index.html - HTML for the carousel
   - script.js - JS logic for the carousel
