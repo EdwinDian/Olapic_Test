@@ -1,24 +1,16 @@
-// OLAPIC TEST [SUN LEE] (5/7/14)
-
 $(document).ready(function() {
 
 	var url = "https://photorankapi-a.akamaihd.net/?auth_token=0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18&version=v2.2";
 
-	url += key;
-
 	$.ajax({
-
 		type: 'GET',
 		url: url,
 		dataType: 'json',
-
 	}).done(function (result) {
 
-		// [ADDED] Set width first (5/8/14)
 		var viewWidth = 160 * (result.data._embedded.length);
 		$('.view').width(viewWidth);
-
-		// Inject each photo result to carousel view (5/7/14)
+n		
 		$.each(result.data._embedded, function (index, value) {
 			// If valid source_id exists...
 			if (value.source_id) {
@@ -33,20 +25,15 @@ $(document).ready(function() {
 			}
 		});
 
-		// [ADDED] Custom Carousel (5/8/14)
 		var view = $('.view');
-		var photos = $('div', view);
-
-		// [ADDED] Get photo width (5/8/14)		
+		var photos = $('div', view);	
 		var photoWidth = 150 + 10;		
 		var photosetWidth = (photoWidth) * 4;
 		var leftValue = photosetWidth*(-1);
 
-		// [ADDED] Set default left (5/8/14)
 		view.css('left', 0);
 
-		// [ADDED] Left arrow click event (5/8/14)
-		$('#left').on('click', function () {
+		$('#nav-prev').on('click', function () {
 			// Get updated view
 			view = $('.view');
 			// Get updated photos
@@ -61,8 +48,7 @@ $(document).ready(function() {
 			$('.view').animate({'left': 0}, 200);
 		});
 
-		// [ADDED] Right arrow click event (5/8/14)
-		$('#right').on('click', function () {
+		$('#nav-next').on('click', function () {
 			// Slide images left by 4 photos' width
 			$('.view').animate({'left': leftValue}, 200, function () {
 				// Get updated view
@@ -78,10 +64,9 @@ $(document).ready(function() {
 			});
 		});
 
-		// Magnific Modal Plugin (5/7/14)
 		$('.view').magnificPopup({
 			delegate: 'a',
-			type: 'image',
+			type: 'image'
 			gallery: {enabled:true},
 			mainClass: 'mfp-with-zoom',
 			zoom: {
