@@ -1,4 +1,4 @@
- $(document).ready(function() {
+$(document).ready(function() {
 
 	var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=';
 	var key = "0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18";
@@ -53,7 +53,7 @@
 			$('.view').animate({'left': 0}, 200);
 		});
 
-		// [ADDED] Right arrow click event (5/8/14)
+		// Right arrow click event
 		$('#right').on('click', function () {
 			// Slide images left by 4 photos' width
 			$('.view').animate({'left': leftValue}, 200, function () {
@@ -70,7 +70,7 @@
 			});
 		});
 
-		// Magnific Modal Plugin (5/7/14)
+		// Magnific Modal Plugin
 		$('.view').magnificPopup({
 			delegate: 'a',
 			type: 'image',
