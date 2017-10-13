@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=';
-	var key = "0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18";
+	var url = 'https://photorankapi-a.akamaihd.net/customers/217104/media/recent?auth_token=';
+	var key = "69479ab03895b0f34bf645c0d84b93f5f165a9de8ad8124a43fb91afe2c957ce";
 
 	url += key;
 
